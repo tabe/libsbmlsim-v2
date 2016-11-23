@@ -24,10 +24,12 @@ endif()
 
 # test: testintegrator
 if (PYTHONINTERP_FOUND)
-add_test(
-  NAME TestIntegrator
-  COMMAND ${PYTHON_EXECUTABLE} $<TARGET_FILE_DIR:testintegrator>/batchTest.py 1-25
-  )
+foreach(caseno RANGE 1 25)
+  add_test(
+    NAME TestIntegrator${caseno}
+    COMMAND ${PYTHON_EXECUTABLE} $<TARGET_FILE_DIR:testintegrator>/batchTest.py ${caseno}-${caseno}
+    )
+endforeach()
 endif()
 
 # installation: testintegrator
